@@ -2,7 +2,8 @@
 // clang-format off
 
 /*
-    spi_daisy_4axis_xyz.h
+	HAM machine pinMap fork of: "spi_daisy_4axis_xyz.h"
+	
     Part of Grbl_ESP32
 
     Pin assignments for a 4-axis machine using Triaminic drivers
