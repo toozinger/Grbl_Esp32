@@ -10,6 +10,8 @@
 // #include "Machines/atari_1020.h"
 //#    include "Machines/test_drive.h"
 #    include "Machines/HAM_PinMap.h"
+//#    include "Machines/spi_daisy_4axis_xyz.h"
+//#    include "Machines/3axis_v4.h"
 
 // !!! For actual use, change the line above to select a board
 // from Machines/, for example:
