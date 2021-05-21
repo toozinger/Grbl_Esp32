@@ -2,14 +2,14 @@
 // clang-format off
 
 /*
-    spi_daisy_4axis_xyz.h
+    HAM pinMap, based on various others
     Part of Grbl_ESP32
 
-    Pin assignments for a 4-axis machine using Triaminic drivers
-    in daisy-chained SPI mode.
-    https://github.com/bdring/4_Axis_SPI_CNC
+    Pin assignments for the ESP32 Development Controller, v4.1 and later.
+    https://github.com/bdring/Grbl_ESP32_Development_Controller
+    https://www.tindie.com/products/33366583/grbl_esp32-cnc-development-board-v35/
 
-    2019    - Bart Dring
+    2018    - Bart Dring
     2020    - Mitch Bradley
 
     Grbl_ESP32 is free software: you can redistribute it and/or modify
@@ -26,59 +26,41 @@
     along with Grbl_ESP32.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#define MACHINE_NAME "SPI_DAISY_4X_XYZ"
+#define MACHINE_NAME            "HAM Custom Pin Map"
 
-#ifdef N_AXIS
-        #undef N_AXIS
-#endif
-#define N_AXIS 3
-
-#define TRINAMIC_DAISY_CHAIN
-
-#define TRINAMIC_RUN_MODE           TrinamicMode :: CoolStep
-#define TRINAMIC_HOMING_MODE        TrinamicMode :: CoolStep
-
-// Use SPI enable instead of the enable pin
-// The hardware enable pin is tied to ground
-#define USE_TRINAMIC_ENABLE
-
-#define X_TRINAMIC_DRIVER       2130        // Which Driver Type?
-#define X_RSENSE                TMC2130_RSENSE_DEFAULT
 #define X_STEP_PIN              GPIO_NUM_12
 #define X_DIRECTION_PIN         GPIO_NUM_14
-#define X_CS_PIN                GPIO_NUM_17  // Daisy Chain, all share same CS pin
-
-#define Y_TRINAMIC_DRIVER       2130        // Which Driver Type?
-#define Y_RSENSE                TMC2130_RSENSE_DEFAULT
 #define Y_STEP_PIN              GPIO_NUM_27
 #define Y_DIRECTION_PIN         GPIO_NUM_26
-#define Y_CS_PIN                X_CS_PIN  // Daisy Chain, all share same CS pin
+#define Z_STEP_PIN              GPIO_NUM_25
+#define Z_DIRECTION_PIN         GPIO_NUM_33
 
-#define Z_TRINAMIC_DRIVER       2130        // Which Driver Type?
-#define Z_RSENSE                TMC2130_RSENSE_DEFAULT
-#define Z_STEP_PIN              GPIO_NUM_15
-#define Z_DIRECTION_PIN         GPIO_NUM_2
-#define Z_CS_PIN                X_CS_PIN  // Daisy Chain, all share same CS pin
+#define X_LIMIT_PIN             GPIO_NUM_17
+#define Y_LIMIT_PIN             GPIO_NUM_4
+#define Z_LIMIT_PIN             GPIO_NUM_16
+
+#define USER_DIGITAL_PIN_0   GPIO_NUM_32
+#define USER_DIGITAL_PIN_1   GPIO_NUM_21
+#define USER_DIGITAL_PIN_2   GPIO_NUM_22
+#define USER_DIGITAL_PIN_3   GPIO_NUM_18 //Used by SD card, but not SD card disabled
 
 
-// Mist is a 3.3V output
-// Turn on with M7 and off with M9
-#define COOLANT_MIST_PIN        GPIO_NUM_21
+// OK to comment out to use pin for other features
+#define STEPPERS_DISABLE_PIN    GPIO_NUM_13
 
-#define SPINDLE_TYPE            SpindleType::PWM
-#define SPINDLE_OUTPUT_PIN         GPIO_NUM_25
-#define SPINDLE_ENABLE_PIN      GPIO_NUM_4
+// Define as laser instead of spindle
+#define SPINDLE_TYPE            SpindleType::LASER
+#define LASER_OUTPUT_PIN      	GPIO_NUM_2   // labeled SpinPWM
 
-// Relay operation
-// Install Jumper near relay
-// For spindle Use max RPM of 1
-// For PWM remove jumper and set MAX RPM to something higher ($30 setting)
-// Interlock jumper along top edge needs to be installed for both versions
-#define DEFAULT_SPINDLE_RPM_MAX     1 // Should be 1 for relay operation
 
-#define PROBE_PIN               GPIO_NUM_22
+//#define COOLANT_MIST_PIN        GPIO_NUM_21  // labeled Mist
+//#define COOLANT_FLOOD_PIN       GPIO_NUM_25  // labeled Flood
+//#define PROBE_PIN               GPIO_NUM_32  // labeled Probe
 
-#define X_LIMIT_PIN             GPIO_NUM_36
-#define Y_LIMIT_PIN             GPIO_NUM_39
-#define Z_LIMIT_PIN             GPIO_NUM_34
 
+/*
+#define CONTROL_SAFETY_DOOR_PIN GPIO_NUM_35  // labeled Door,  needs external pullup
+#define CONTROL_RESET_PIN       GPIO_NUM_34  // labeled Reset, needs external pullup
+#define CONTROL_FEED_HOLD_PIN   GPIO_NUM_36  // labeled Hold,  needs external pullup
+#define CONTROL_CYCLE_START_PIN GPIO_NUM_39  // labeled Start, needs external pullup
+*/
