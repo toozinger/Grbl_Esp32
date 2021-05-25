@@ -34,7 +34,7 @@ namespace UserOutput {
 
     void DigitalOutput::init() {
         pinMode(_pin, OUTPUT);
-        digitalWrite(_pin, LOW);
+        digitalWrite(_pin, HIGH); //Changes to sinking output (default HIGH)
 
         config_message();
     }
