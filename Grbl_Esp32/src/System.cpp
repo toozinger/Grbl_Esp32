@@ -279,8 +279,8 @@ void system_exec_control_pin(ControlPins pins) {
 
 void sys_digital_all_off() {
     for (uint8_t io_num = 0; io_num < MaxUserDigitalPin; io_num++) {
-        //myDigitalOutputs[io_num]->set_level(LOW); //Since using sinking output, stop turning pins off on a system reset
-		continue;
+        myDigitalOutputs[io_num]->set_level(LOW);
+		
     }
 }
 
