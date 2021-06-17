@@ -39,19 +39,19 @@
 #define Y_LIMIT_PIN             GPIO_NUM_4
 #define Z_LIMIT_PIN             GPIO_NUM_16
 
-#define USER_DIGITAL_PIN_0   GPIO_NUM_32
-#define USER_DIGITAL_PIN_1   GPIO_NUM_21
-#define USER_DIGITAL_PIN_2   GPIO_NUM_22
-#define USER_DIGITAL_PIN_3   GPIO_NUM_18 //Used by SD card, but not SD card disabled
+#define USER_DIGITAL_PIN_0   GPIO_NUM_32 // Connected to Due pin 52, controls servo 0
+#define USER_DIGITAL_PIN_1   GPIO_NUM_21 // Connected to Due pin 50, controls servo 1
+#define USER_DIGITAL_PIN_2   GPIO_NUM_22 // Connected to Due pin 48, controls servo 2
+#define USER_DIGITAL_PIN_3   GPIO_NUM_18 // Connected to Due pin 46
 
 
 // OK to comment out to use pin for other features
 #define STEPPERS_DISABLE_PIN    GPIO_NUM_13
 
 // Define as laser instead of spindle
-#define SPINDLE_TYPE            SpindleType::LASER
-#define LASER_OUTPUT_PIN      	GPIO_NUM_2   // labeled SpinPWM
-
+#define SPINDLE_TYPE            	SpindleType::LASER
+#define LASER_OUTPUT_PIN      		GPIO_NUM_2   	// labeled SpinPWM
+				
 
 //#define COOLANT_MIST_PIN        GPIO_NUM_21  // labeled Mist
 //#define COOLANT_FLOOD_PIN       GPIO_NUM_25  // labeled Flood
